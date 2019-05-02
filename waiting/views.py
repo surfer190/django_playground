@@ -35,6 +35,11 @@ class IndexView(generics.ListCreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         # do a long task
-        completed = tasks.waste_time.delay()
+        waste_time_task = tasks.waste_time.delay()
+        task_id = waste_time_task.task_id
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(
+            {'task_id': task_id},
+            status=status.HTTP_202_ACCEPTED,
+            headers=headers
+        )
