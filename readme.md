@@ -77,4 +77,4 @@ View it on the curses (command line) monitor
 
     celery events
 
-
+If you have not started any celery workers, the tasks will remain in the queue.
