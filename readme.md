@@ -19,6 +19,8 @@ Prerequisites:
 
     celery -A django_playground worker -l info
 
+If you use just `celery worker` you will get the relative import error.
+
 Virtual env
 
     python3.7 -m venv env
@@ -78,3 +80,7 @@ View it on the curses (command line) monitor
     celery events
 
 If you have not started any celery workers, the tasks will remain in the queue.
+
+* Add a soft timeout
+* Use a different task result backend
+* Add an interval where only a single vdc per minute
