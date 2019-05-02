@@ -28,6 +28,10 @@ Install requirements
 
     pip install -r requirements.txt
 
+Migrate the db
+
+    ./manage.py migrate
+
 Run it
 
     ./manage.py runserver
@@ -72,6 +76,5 @@ View it
 View it on the curses (command line) monitor
 
     celery events
-
 
 
