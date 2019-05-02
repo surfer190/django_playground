@@ -40,4 +40,4 @@ Run it
 * Ensure that an `Accepted 202` is returned immediately to the user, with a task id.
 * Ensure that the task state can be queried by the user to see the status.
 * Ensure errors encountered during task execution are logged
-
+* Ensure the interval between those tasks is long - 20 seconds - to prevent double clicking issues
