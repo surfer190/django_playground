@@ -81,6 +81,8 @@ View it on the curses (command line) monitor
 
 If you have not started any celery workers, the tasks will remain in the queue.
 
+Check info on [keeping results in the backend](http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#keeping-results)
+
 * Add a soft timeout
 * Use a different task result backend
 * Add an interval where only a single vdc per minute

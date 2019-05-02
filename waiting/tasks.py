@@ -3,7 +3,7 @@ import time
 
 from celery import shared_task
 
-@shared_task
+@shared_task(soft_time_limit=300)
 def waste_time():
     '''
     Function to simulate a long running task, it really just wastes time
