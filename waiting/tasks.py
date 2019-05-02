@@ -1,10 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 import time
 
-# from celery import Celery
-
-# app = Celery('tasks', broker='pyamqp://guest@localhost//')
-
 from celery import shared_task
 
 @shared_task

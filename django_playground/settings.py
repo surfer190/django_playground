@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'tasks',
+    'waiting',
+    
     'rest_framework',
     'django_celery_results',
 ]
