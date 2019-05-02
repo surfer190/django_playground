@@ -1,3 +1,5 @@
+import time
+
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
@@ -25,4 +27,26 @@ class WaitingViewTests(TestCase):
         self.assertEqual(
             response.status_code,
             status.HTTP_200_OK
+        )
+
+    def test_post_index_long(self):
+        '''
+        Ensure posting to the index takes a long time
+        '''
+        started_at = time.time()
+
+        waiting_index = reverse('waiting:index')
+        response = self.client.post(
+            waiting_index,
+            data={'message': 'Hello world'}
+        )
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_201_CREATED
+        )
+        
+        elapsed = time.time() - started_at
+        self.assertGreaterEqual(
+            elapsed,
+            2
         )
