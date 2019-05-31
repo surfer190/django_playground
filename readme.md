@@ -8,16 +8,16 @@ Prerequisites:
 
 * [RabbitMQ](https://www.rabbitmq.com/download.html) installed and running on your host
 
-    brew update
-    brew reinstall rabbitmq
-    # Run as a service
-    brew services start rabbitmq
-    # Run ad-hoc
-    rabbitmq-server
+        brew update
+        brew reinstall rabbitmq
+        # Run as a service
+        brew services start rabbitmq
+        # Run ad-hoc
+        rabbitmq-server
     
 * The celery worker running from project root
 
-    celery -A django_playground worker -l info
+        celery -A django_playground worker -l info
 
 If you use just `celery worker` you will get the relative import error.
 
