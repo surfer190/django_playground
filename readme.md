@@ -63,7 +63,7 @@ Show the result of a task
 
 Inspect active tasks
 
-    celery  inspect active
+    celery inspect active
 
 But for production you would want to use [flow-er](http://docs.celeryproject.org/en/latest/userguide/monitoring.html#flower-real-time-celery-web-monitor)
 
