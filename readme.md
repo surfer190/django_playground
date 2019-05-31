@@ -1,6 +1,11 @@
 # A django playground
 
-Try things in this project
+Some things I've tried in this project:
+
+#### A task queue API
+
+Start tasks and get returned an accepted and link to check the status of the task.
+The task execution is deferred to celery which controls rabbit-mq.
 
 ## Gettings Started
 
