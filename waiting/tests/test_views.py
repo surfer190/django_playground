@@ -5,6 +5,7 @@ from django.urls import reverse
 from rest_framework import status
 
 from waiting.tasks import waste_time
+from tasks.models import Task
 
 class WaitingViewTests(TestCase):
     '''
@@ -51,6 +52,29 @@ class WaitingViewTests(TestCase):
         self.assertLess(
             elapsed,
             2
+        )
+
+    def test_task_created(self):
+        '''
+        Ensure posting to the index creates a task
+        '''
+        started_at = time.time()
+
+        waiting_index = reverse('waiting:index')
+        response = self.client.post(
+            waiting_index,
+            data={'message': 'Hello world'}
+        )
+        task = Task.objects.get(
+            task_id=response.json().get('task_id')
+        )
+        self.assertEqual(
+            task.status,
+            Task.PENDING
+        )
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_202_ACCEPTED
         )
 
     def test_waste_time_takes_long(self):

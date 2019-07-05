@@ -32,3 +32,14 @@ class TaskViewTests(TestCase):
             response.status_code,
             status.HTTP_200_OK
         )
+
+    def test_view_all_tasks(self):
+        '''
+        Ensure you can view all tasks
+        '''
+        task_list_url = reverse('tasks:list')
+        response = self.client.get(task_list_url)
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_200_OK
+        )

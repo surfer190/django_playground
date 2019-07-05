@@ -1,9 +1,10 @@
 from celery.result import AsyncResult
 from django_celery_results.models import TaskResult
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.response import Response
 
-from tasks.serializers import TaskSerializer
+from tasks.models import Task
+from tasks.serializers import TaskSerializer, TaskModelSerializer
 
 
 class TaskView(RetrieveAPIView):
@@ -26,3 +27,12 @@ class TaskView(RetrieveAPIView):
                 result
             )
         return Response(serializer.data)
+
+
+class TaskListView(ListAPIView):
+    '''
+    List all tasks along with status
+    '''
+    queryset = Task.objects.all()
+    serializer_class = TaskModelSerializer
+

@@ -6,6 +6,7 @@ from rest_framework.reverse import reverse
 
 from waiting.serializer import HelloSerializer
 from waiting import tasks
+from tasks.models import Task
 
 
 @api_view(['GET'])
@@ -37,7 +38,13 @@ class IndexView(generics.ListCreateAPIView):
         serializer.is_valid(raise_exception=True)
         # do a long task
         waste_time_task = tasks.waste_time.delay()
+        # Create the task object
         task_id = waste_time_task.task_id
+        
+        new_task = Task.objects.create(
+            task_id=task_id,
+        )
+        
         headers = self.get_success_headers(serializer.data)
         return Response(
             {
